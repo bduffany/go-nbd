@@ -25,6 +25,7 @@ var (
 	ErrUnknownInfo          = errors.New("unknown info")
 	ErrUnknownErr           = errors.New("unknown error")
 	ErrUnsupportedBlockSize = errors.New("unsupported block size")
+	ErrClientDisconnected   = errors.New("client disconnected")
 )
 
 type Options struct {
@@ -307,6 +308,8 @@ n:
 
 			return
 		}
+
+		fatal <- ErrClientDisconnected
 	}()
 
 	return <-fatal
