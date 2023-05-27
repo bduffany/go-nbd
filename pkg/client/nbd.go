@@ -118,7 +118,6 @@ func Connect(conn net.Conn, device *os.File, options *Options) error {
 			go func() {
 				select {
 				case <-udevReadyCh:
-					close(udevQuit)
 
 					options.OnConnected()
 
